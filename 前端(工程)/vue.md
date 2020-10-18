@@ -3,9 +3,11 @@
 mac下安装node.js可以采用brew安装;
 brew命令类似于linux下yum
 ```
-curl -LsSf http://github.com/mxcl/homebrew/tarball/master | sudo tar xvz -C/usr/local //安装brew，一般mac自带
+//安装brew，一般mac自带
+curl -LsSf http://github.com/mxcl/homebrew/tarball/master |sudo tar xvz -C/usr/local
 
-brew install node //安装node.js
+//安装node.js
+brew install node
 
 node -v //查看node.js版本
 npm -v  //查看npm版本
