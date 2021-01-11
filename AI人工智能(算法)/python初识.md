@@ -25,4 +25,6 @@ pip install <module_name>
 pip list
 ```
 ## python开发ide
-使用文本编辑器写代码还是效率太低，推荐使用pyCharm
+- 推荐使用<font color=#ff0000 size=4>pyCharm</font>
+- 作为一款强大的python开发IDE,在创建项目时可以选择python解释器版本(python2或python3)，然后IDE会帮你创建一个虚拟的python环境(如下图的venv/bin目录下命令)，包括python解释器、依赖包管理器pip，可以用该项目空间下的pip下载你需要的依赖包等等;
+![](assets/python初识-df320b44.png)
