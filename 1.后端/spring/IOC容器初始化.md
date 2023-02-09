@@ -62,4 +62,4 @@ spring bean的拓展点超级多，这也是spring的扩展性好的原因。主
 - InitializingBean
 
 # 完整生命周期
-![](spring-bean生命周期.png)
+![](assets/spring-bean生命周期.png)
