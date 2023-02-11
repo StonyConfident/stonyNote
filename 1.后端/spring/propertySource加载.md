@@ -39,8 +39,14 @@ Environment先于IOC容器ApplicationContext创建，但PropertySource的加载�
 ![](assets/propertySource加载-2634932f.png)
 ```sequence
 MyApplication -> SpringApplication: 应用main入口\nSpringApplication.run调用
-SpringApplication->EventPublishingRunListener:1.prepareEnvironment\n1.1.getOrCreateEnvironment//实例化Environment对象,add PropertySource="systemProperties","SystemEnvironment"\n1.2.configureEnvironment//初始化\n1.2.1.configurePropertySources\n1.2.1.1.add PropertySource="defaultProperties"\n1.2.1.2.add PropertySource="commandLineArgs"\n1.2.2.configureProfiles//设置profile\n1.3.广播ApplicationEnvironmentPreparedEvent
-EventPublishingRunListener->SimpleApplicationEventMulticaster:广播事件
+
+SpringApplication->SpringApplication:0.initialize\n0.1.加载ApplicationContextInitializer\n0.2.加载ApplicationListener\n
+SpringApplication->SpringApplication:加载SpringApplicationRunListener\nlisteners.starting
+
+SpringApplication->SpringApplication:1.prepareEnvironment\n1.1.getOrCreateEnvironment//实例化Environment对象,add PropertySource="systemProperties","SystemEnvironment"\n1.2.configureEnvironment//初始化\n1.2.1.configurePropertySources\n1.2.1.1.add PropertySource="defaultProperties"\n1.2.1.2.add PropertySource="commandLineArgs"\n1.2.2.configureProfiles//设置profile\n1.3.listeners.environmentPrepared
+
+SpringApplication->EventPublishingRunListener:
+EventPublishingRunListener->SimpleApplicationEventMulticaster:,广播ApplicationEnvironmentPreparedEvent
 SimpleApplicationEventMulticaster->SimpleApplicationEventMulticaster:加载所有匹配的ApplicationListener
 SimpleApplicationEventMulticaster->SimpleApplicationEventMulticaster:轮询调用ApplicationListener#onApplicationEvent\n其中用于Property处理的是ConfigFileApplicationListener
 SimpleApplicationEventMulticaster->ConfigFileApplicationListener:
@@ -58,10 +64,11 @@ DiamondEnvironmentPostProcessor->ConfigFileApplicationListener:
 ConfigFileApplicationListener->SimpleApplicationEventMulticaster:
 SimpleApplicationEventMulticaster->EventPublishingRunListener:
 EventPublishingRunListener->SpringApplication:
-SpringApplication->SpringApplication:实例化ApplicationContext
+SpringApplication->SpringApplication:createApplicationContext//实例化ApplicationContext
 SpringApplication->SpringApplication:prepareContext,setEnvironment
-SpringApplication->SpringApplication:refreshContext,IOC容器初始化
+SpringApplication->SpringApplication:refreshContext//IOC容器初刷新启动,另开文章详讲
 SpringApplication->SpringApplication:afterRefresh
+SpringApplication->SpringApplication:listeners.finished
 ```
 
 - 拓展方式
