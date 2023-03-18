@@ -3,13 +3,16 @@
 ![](assets/log加载-a690cbeb.png)
 包括java自带和Slf4J两个标准
 - LogbackLoggingSystem
+logback日志框架
 配置文件位置，"logback-test.groovy", "logback-test.xml", "logback.groovy", "logback.xml"
 以及-spring后缀的;
 
 - Log4J2LoggingSystem
+log4j2日志框架
 配置文件，"log4j2.yaml", "log4j2.yml"
 
 - JavaLoggingSystem
+java.util.logging日志框架
 配置文件位置，logging.properties
 
 # 其他日志框架
