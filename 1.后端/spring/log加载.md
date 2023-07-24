@@ -37,6 +37,7 @@
 	工厂接口:org.slf4j.ILoggerFactory
 	工厂总门面:org.slf4j.LoggerFactory
 ### 日志实现框架
+![](assets/log加载-b8e85045.png)
 负责最终的具体的日志打印，比如
 log4j(org.apache.log4j.Logger)、log4j2(org.apache.logging.log4j.Logger)、logback(ch.qos.logback.classic.Logger)、
 jul(java.util.logging.Logger);
