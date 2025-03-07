@@ -1,32 +1,4 @@
-[toc]
-**工欲善其事，必先利其器**
-## 1.brew
-mac系统上的brew类似于linux下的yum，安装软件必备
-## 2.item2
-请先确认mac默认的shell，如果使用bash修改.bash_profile文件，如果使用zsh修改.zshrc文件；
-非常好用的终端工具，并设置不同类型文件不同颜色显示;
-```bash
-export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
-```
-## 3.git
-当下最流行的代码管理工具，通过git可以同远程服务端github交互，但如果每次交互的时候都需要输入一遍账户名和密码，实在太痛苦了；采用ssh签名验签的形式，可节省很多事情; 原理其实很简单，客户端对发送的命令进行私钥签名，服务端利用用户设置好的公钥进行验签，保证请求的命令的安全性；
-* 下载git
-```bash
-brew install git
-```
-* 设置git账号的name和email
-```bash
-//打开bash，分别执行以下两句命令
-git config --global user.name “用户名”
-git config --global user.email “邮箱”
-```
-* ssh配置
- 1.在用户目录${user.home}下创建 ~/.ssh目录，并进入该目录
- 2.执行生成公钥和私钥的命令ssh-keygen -t rsa，会在一个文件夹里面生成一个私钥 id_rsa和一个公钥id_rsa.pub
-  3.将id_rsa.pub复制到远程git上，个人中心-->Settings-->SSH and GPG keys下面;
-
-## <font color=#FF0000 >4.jdk8</font>
+## 1.jdk8
 这个不必多介绍，java代码想要跑起来，这个是必须的；虽然下面要介绍的集成开发工具idea会自带jdk，但还是推荐自己安装一下jdk，因为这样你可以通过java命令运用你的jar包，而不必打开重量级的集成开发界面；当然，最好也把idea上的默认jdk设置为你自己安装的那个，设置如下:
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200321231747318.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1N0b255X0NvbmZpZGVudA==,size_16,color_FFFFFF,t_70)
 - jdk下载地址,选mac版本，https://www.oracle.com/java/technologies/javase-jdk8-downloads.html
@@ -39,13 +11,13 @@ export CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
 export PATH=$JAVA_HOME/bin:$PATH:.
 ```
 
-## 5.IDEA
+## 2.IDEA
 &#8194;&#8194;idea应该当前java后端开发最好的集成开发工具，功能非常完善齐全；下载地址:https://www.jetbrains.com/idea/，包括旗舰版和社区版；
 idea是一款收费软件，免费activation code可通过http://idea.medeming.com/jets/获取
 - idea自带的jvm目录: /Applications/IntelliJ IDEA.app/Contents/jbr/Contents/Home/，java11版本
 - 自己下载的jvm目录: /Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home，java8版本
 
-## 6.maven
+## 3.maven
 &#8194;&#8194;项目管理工具maven也是必需安装的工具之一，如果自己来维护项目的依赖包管理，肯定会非常头大，效率非常低；虽然在集成开发工具idea上也有自带的maven，但如果你想要通过命令行管理你的工程，有必要在系统上安装一个；
 maven需要基于jdk环境运行;
 - maven下载
@@ -73,18 +45,9 @@ maven安装后，在用户目录\${user.home}/下会新建一个<font color=#ff0
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200322152520886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1N0b255X0NvbmZpZGVudA==,size_16,color_FFFFFF,t_70)
 我们可以配置idea使用的maven为其自带的，但settings.xml和repository目录最好确保和我们自己安装的maven保持一致，也就是说二者共用一个配置和共用一个本地仓库；
 
-## 7.其他工具
-- IDEA好用的插件
+## 4.IDEA好用的插件
 	- Lombok,自动生成代码
 	- Free Mybatis plugin，方便mapper.xml跳转
 	- JRebel and XRebel for IntelliJ,本地热部署插件
 	- Maven Helper,依赖分析，冲突解决插件
 	- PlantUML integration,画图工具
-- postman, curl工具
-- xmind思维导图
-- www.processon.com 技术方案在线画图工具
-- Atom，markdown编辑器，写周报神器
-- sublime text，文本编辑器
-- Sequel pro，数据库可视化工具
-- Charles，抓包代理工具
-- jmeter，压测工具
